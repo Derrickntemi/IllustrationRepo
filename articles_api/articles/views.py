@@ -24,7 +24,7 @@ permission_classes = (permissions.IsAuthenticated)
 def post(self, request, *args, **kwargs):
     article = Articles.objects.create(
         title=request.data["title"],
-        artist=request.data["author"]
+        author=request.data["author"]
     )
     return Response(
         data=ArticlesSerializer(article).data,
@@ -78,7 +78,7 @@ class ArticlesDetailView(generics.RetrieveUpdateDestroyAPIView):
             )
 
 # login
-# This permission class will over ride the global permission
+# This permission class will override the global permission
 
 
 # Retrieve the JWT settings
