@@ -1,0 +1,14 @@
+version: '3.0'
+
+#defines one service called web
+services:
+  # db:
+  #   image: postgres
+  web:
+    build: .
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    container_name: articles_api
+    volumes:
+      - .:/articles_api
+    ports:
+      - "8000:8000"
